@@ -1,0 +1,41 @@
+<launch>
+  <!--
+  <node name="usb_cam_node"
+          pkg="usb_cam"
+          type="usb_cam_node"
+          output="screen"/>
+	-->
+    <node name="color_segm_node"
+          pkg="mini_project"
+          type="color_segm_node.py"
+          output ="screen"/>
+
+    <!--<node name="pid_speed_node"-->
+          <!--pkg ="mini_project"-->
+          <!--type = "pid_speed_node.py"-->
+          <!--output ="screen"/>-->
+
+    <include file = "$(find jetson_csi_cam)/jetson_csi_cam.launch">
+
+      <arg name = "width" value="320"/>
+      <arg name = "height" value = "240"/>
+      <arg name = "fps" value = "30"/>
+
+    </include>
+
+    <!--<node name ="imu_euler_node"-->
+          <!--pkg ="mini_project"-->
+          <!--type ="imu_euler.py"-->
+          <!--output ="screen"/>-->
+
+    <!--<node name="motor_controller_node"-->
+          <!--pkg="mini_project"-->
+          <!--type="motor_controller_node.py"-->
+          <!--output = "screen"/>-->
+
+    <!--<node name= "rotate_node"-->
+          <!--pkg="mini_project"-->
+          <!--type="rotate_node.py"-->
+          <!--output ="screen"/>-->
+
+</launch>

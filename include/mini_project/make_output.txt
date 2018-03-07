@@ -1,0 +1,10 @@
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP vector.h -o vector.h.gch
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o minimu9-ahrs.o minimu9-ahrs.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o lsm303.o lsm303.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o minimu9.o minimu9.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o lis3mdl.o lis3mdl.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o lsm6.o lsm6.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o prog_options.o prog_options.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o i2c_bus.o i2c_bus.cpp
+g++  -I. -I/usr/include/eigen3 -Wall -std=gnu++11 -O2 -MD -MP  -c -o l3g.o l3g.cpp
+g++   minimu9-ahrs.o lsm303.o minimu9.o lis3mdl.o lsm6.o prog_options.o i2c_bus.o l3g.o  -lboost_program_options -o minimu9-ahrs

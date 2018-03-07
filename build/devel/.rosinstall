@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/nvidia/catkin_ws/src/mini_project/build/devel/setup.sh
