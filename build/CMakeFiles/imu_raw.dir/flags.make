@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=gnu++11 -Wall
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_PACKAGE_NAME=\"mini_project\"
 
-CXX_INCLUDES = -I/home/nvidia/catkin_ws/src/mini_project/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include, -I/usr/include/eigen3 
+CXX_INCLUDES = -I/home/farida/catkin_ws_farida/src/mini_project/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include, -I/usr/include/eigen3 
 

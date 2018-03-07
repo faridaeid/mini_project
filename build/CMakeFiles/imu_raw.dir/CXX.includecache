@@ -86,9 +86,9 @@ Eigen/Geometry
 
 ../include/mini_project/version.h
 
-/home/nvidia/catkin_ws/src/mini_project/src/i2c_bus.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/i2c_bus.cpp
 mini_project/i2c_bus.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/i2c_bus.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/i2c_bus.h
 cerrno
 -
 cstring
@@ -104,43 +104,43 @@ fcntl.h
 linux/i2c-dev.h
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/l3g.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/l3g.cpp
 mini_project/l3g.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/l3g.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/l3g.h
 stdexcept
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/lis3mdl.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/lis3mdl.cpp
 mini_project/lis3mdl.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/lis3mdl.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/lis3mdl.h
 stdexcept
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/lsm303.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/lsm303.cpp
 mini_project/lsm303.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/lsm303.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/lsm303.h
 stdexcept
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/lsm6.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/lsm6.cpp
 mini_project/lsm6.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/lsm6.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/lsm6.h
 stdexcept
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/minimu9-ahrs.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/minimu9-ahrs.cpp
 mini_project/vector.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/vector.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/vector.h
 mini_project/version.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/version.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/version.h
 mini_project/prog_options.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/prog_options.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/prog_options.h
 mini_project/minimu9.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/minimu9.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/minimu9.h
 mini_project/exceptions.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/exceptions.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/exceptions.h
 mini_project/pacer.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/pacer.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/pacer.h
 iostream
 -
 iomanip
@@ -148,6 +148,8 @@ iomanip
 stdio.h
 -
 stdlib.h
+-
+limits
 -
 unistd.h
 -
@@ -162,17 +164,19 @@ system_error
 chrono
 -
 ros/ros.h
-/home/nvidia/catkin_ws/src/mini_project/src/ros/ros.h
+/home/farida/catkin_ws_farida/src/mini_project/src/ros/ros.h
 sensor_msgs/Imu.h
-/home/nvidia/catkin_ws/src/mini_project/src/sensor_msgs/Imu.h
+/home/farida/catkin_ws_farida/src/mini_project/src/sensor_msgs/Imu.h
+sensor_msgs/MagneticField.h
+/home/farida/catkin_ws_farida/src/mini_project/src/sensor_msgs/MagneticField.h
 
-/home/nvidia/catkin_ws/src/mini_project/src/minimu9.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/minimu9.cpp
 mini_project/vector.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/vector.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/vector.h
 mini_project/minimu9.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/minimu9.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/minimu9.h
 mini_project/exceptions.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/exceptions.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/exceptions.h
 stdio.h
 -
 unistd.h
@@ -184,9 +188,9 @@ fstream
 wordexp.h
 -
 
-/home/nvidia/catkin_ws/src/mini_project/src/prog_options.cpp
+/home/farida/catkin_ws_farida/src/mini_project/src/prog_options.cpp
 mini_project/prog_options.h
-/home/nvidia/catkin_ws/src/mini_project/src/mini_project/prog_options.h
+/home/farida/catkin_ws_farida/src/mini_project/src/mini_project/prog_options.h
 iostream
 -
 fstream
@@ -890,6 +894,26 @@ std_msgs/Header.h
 geometry_msgs/Quaternion.h
 -
 geometry_msgs/Vector3.h
+-
+geometry_msgs/Vector3.h
+-
+
+/opt/ros/kinetic/include/sensor_msgs/MagneticField.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
 -
 geometry_msgs/Vector3.h
 -

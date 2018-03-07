@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/catkin_ws/src/mini_project
+CMAKE_SOURCE_DIR = /home/farida/catkin_ws_farida/src/mini_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/catkin_ws/src/mini_project/build
+CMAKE_BINARY_DIR = /home/farida/catkin_ws_farida/src/mini_project/build
 
 # Utility rule file for clean_test_results.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/nvidia/catkin_ws/src/mini_project/build
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/nvidia/catkin_ws/src/mini_project/build/test_results
+	/usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/remove_test_results.py /home/farida/catkin_ws_farida/src/mini_project/build/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /home/nvidia/catkin_ws/src/mini_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/catkin_ws/src/mini_project /home/nvidia/catkin_ws/src/mini_project /home/nvidia/catkin_ws/src/mini_project/build /home/nvidia/catkin_ws/src/mini_project/build /home/nvidia/catkin_ws/src/mini_project/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/farida/catkin_ws_farida/src/mini_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/farida/catkin_ws_farida/src/mini_project /home/farida/catkin_ws_farida/src/mini_project /home/farida/catkin_ws_farida/src/mini_project/build /home/farida/catkin_ws_farida/src/mini_project/build /home/farida/catkin_ws_farida/src/mini_project/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

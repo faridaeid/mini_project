@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nvidia/catkin_ws/src/mini_project
+CMAKE_SOURCE_DIR = /home/farida/catkin_ws_farida/src/mini_project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nvidia/catkin_ws/src/mini_project/build
+CMAKE_BINARY_DIR = /home/farida/catkin_ws_farida/src/mini_project/build
 
 # Utility rule file for geometry_msgs_generate_messages_nodejs.
 
@@ -67,6 +67,6 @@ CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
 .PHONY : CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend:
-	cd /home/nvidia/catkin_ws/src/mini_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nvidia/catkin_ws/src/mini_project /home/nvidia/catkin_ws/src/mini_project /home/nvidia/catkin_ws/src/mini_project/build /home/nvidia/catkin_ws/src/mini_project/build /home/nvidia/catkin_ws/src/mini_project/build/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/farida/catkin_ws_farida/src/mini_project/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/farida/catkin_ws_farida/src/mini_project /home/farida/catkin_ws_farida/src/mini_project /home/farida/catkin_ws_farida/src/mini_project/build /home/farida/catkin_ws_farida/src/mini_project/build /home/farida/catkin_ws_farida/src/mini_project/build/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
 

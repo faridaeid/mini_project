@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-import rospy
 import numpy as np
-from motor_controller import MotorController
+
+import rospy
 from std_msgs.msg import Int32MultiArray
+
+from motor_controller import MotorController
 
 
 class MotorControllerNode(object):
@@ -12,7 +14,7 @@ class MotorControllerNode(object):
 
         rospy.init_node('motor_controller_node')
         self.motor = MotorController()
-        sub = rospy.Subscriber('speed_topic', Int32MultiArray, self.adjust_motor)
+        sub = rospy.Subscriber('motor/speed_motors', Int32MultiArray, self.adjust_motor)
 
     def adjust_motor(self, data):
         speed_values = np.array(data.data)

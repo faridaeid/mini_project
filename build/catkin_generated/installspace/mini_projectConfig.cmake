@@ -67,8 +67,8 @@ set(mini_project_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(mini_project_SOURCE_PREFIX /home/nvidia/catkin_ws/src/mini_project)
-  set(mini_project_DEVEL_PREFIX /home/nvidia/catkin_ws/src/mini_project/build/devel)
+  set(mini_project_SOURCE_PREFIX /home/farida/catkin_ws_farida/src/mini_project)
+  set(mini_project_DEVEL_PREFIX /home/farida/catkin_ws_farida/src/mini_project/build/devel)
   set(mini_project_INSTALL_PREFIX "")
   set(mini_project_PREFIX ${mini_project_DEVEL_PREFIX})
 else()
@@ -129,7 +129,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /usr/local/lib;/opt/ros/kinetic/lib)
+    foreach(path /usr/local/lib;/home/farida/catkin_ws_farida/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

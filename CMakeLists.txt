@@ -137,7 +137,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/mini_project_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/imu/mini_project_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -149,7 +149,7 @@ include_directories(
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-add_executable(imu_raw src/minimu9-ahrs.cpp src/i2c_bus.cpp src/l3g.cpp src/lis3mdl.cpp src/lsm6.cpp src/lsm303.cpp src/minimu9.cpp src/prog_options.cpp)
+add_executable(imu_raw src/imu/minimu9-ahrs.cpp src/imu/i2c_bus.cpp src/imu/l3g.cpp src/imu/lis3mdl.cpp src/imu/lsm6.cpp src/imu/lsm303.cpp src/imu/minimu9.cpp src/imu/prog_options.cpp)
 
 ## Specify libraries to link a library or executable target against
 
