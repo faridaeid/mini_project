@@ -12,11 +12,10 @@ The idea is having a moving vehicle moving towards a colored box with an arrow o
 
 ```
 Super Master
---> Rotation Controller (Publisher)
---> PID Controller (Publisher)
-    --> PID
---> Color Segmentation (Publisher)
---> Motor Controller (Publisher) 
+Rotation Controller
+PID Controller
+Color Segmentation 
+Motor Controller 
 ```
 
 Super Node initializes the controllers. Then using a finite state machine it get values the controllers are publishing.
