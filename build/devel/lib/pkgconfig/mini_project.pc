@@ -1,8 +1,0 @@
-prefix=/home/farida/catkin_ws_farida/src/mini_project/build/devel
-
-Name: mini_project
-Description: Description of mini_project
-Version: 0.0.0
-Cflags: -I/home/farida/catkin_ws_farida/src/mini_project/include
-Libs: -L/home/farida/catkin_ws_farida/src/mini_project/build/devel/lib 
-Requires: 
