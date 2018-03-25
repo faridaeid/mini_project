@@ -12,9 +12,9 @@ class RotationController(object):
         self.sub_euler = rospy.Subscriber("imu/data_euler", Vector3, self.set_robot_yaw)
         self.pub_motor = rospy.Publisher("motor/speed_motors", Int32MultiArray)    #TODO multiple instance to same publisher in same node
 
-        self.rotation_angle = 90.0
+        self.rotation_angle = 0.0
         self.rotation_direction = 1
-        self.rotation_speed = 30
+        self.rotation_speed = 50
         self.robot_yaw = 0.0
         self.start_yaw = 0.0
         self.end_yaw = 0.0
@@ -32,8 +32,6 @@ class RotationController(object):
         else:
             self.rotation_direction = 1
 
-        self.rotate()
-
     def set_robot_yaw(self, data):
         self.robot_yaw = self.adjust_degrees(data.z)
 
@@ -41,13 +39,13 @@ class RotationController(object):
 
         self.start_yaw = self.robot_yaw
 
-        self.end_yaw = (self.start_yaw + self.rotation_angle) % 360
+        self.end_yaw = (self.start_yaw - self.rotation_angle) % 360
 
-        print 'done', self.robot_yaw, self.end_yaw
+        # print 'rotation:', self.robot_yaw, self.end_yaw
 
 
         self.motor_speed.data = ([self.rotation_speed * self.rotation_direction,
-                              self.rotation_speed * self.rotation_direction *- 1])
+                              self.rotation_speed * self.rotation_direction * -1])
 
         self.pub_motor.publish(self.motor_speed)
 
@@ -62,9 +60,8 @@ class RotationController(object):
         self.pub_motor.publish(self.motor_speed)
 
     def should_stop(self):
-        
-        if abs(self.robot_yaw - self.end_yaw) < 20:
-
+        # print self.robot_yaw, self.end_yaw, 'rotation:', self.start_yaw, self.end_yaw
+        if abs(self.robot_yaw - self.end_yaw) < 1:
             return True
         else:
             # print self.robot_yaw, self.end_yaw

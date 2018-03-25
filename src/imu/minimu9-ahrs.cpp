@@ -83,23 +83,52 @@ sensor_set set;
 	ros::init(argc, argv, "imu");
 	ros::NodeHandle n;
 	ros::Publisher imu_pub = n.advertise<sensor_msgs::Imu>("imu/data_raw", 1);
-//	ros::Rate loop_rate(200);
+	//ros::Rate loop_rate(200);
 	imu.enable();
 
 	double gyro_scale = 0.004375 * 3.14159265 / 180.;
 	double acro_scale = 0.000061 * 9.81;
-	double offset_acro[3] = {822.89758, -38.087101, -413.978755951};
-	double offset_gyro[3] = {832.760254, 905.525085, 1269.487305};
+	double offset_acro[3] = {-306.785400, 1823.514526, -413.978755951};
+	double offset_gyro[3] = {-180.016068, 519.858459, 411.838379};
 	sensor_msgs::Imu imu_msg;
 
-	int count = 0;
-	float a_acumlat[3] = {0, 0, 0};
-	float a_avg[3] = {0, 0, 0};
-	float g_acumlat[3] = {0, 0, 0};
-	float g_avg[3] = {0, 0, 0};
+	/* comment this toggle claibration */
+//	int count = 0;
+//	/* number of avg values */
+//	int iter = 20000;
+//	/* sleep just in case */
+//	float sleep_duration = 0;
+//	ros::Duration(sleep_duration)::Sleep();
+//	float a_acumlat[3] = {0, 0, 0};
+//	float a_avg[3] = {0, 0, 0};
+//	float g_acumlat[3] = {0, 0, 0};
+//	float g_avg[3] = {0, 0, 0};
+//
+//	for (int i = 0; i < iter; ++i) {
+//		count++;
+//		imu.read_raw();
+//		for (int i = 0; i < 3; ++i) {
+//			a_acumlat[i] += imu.a[i];
+//			g_acumlat[i] += imu.g[i];
+//			a_avg[i] = a_acumlat[i] / count;
+//			g_avg[i] = g_acumlat[i] / count;
+//		}
+//	}
+//	offset_acro[0] = -a_avg[0];
+//	offset_acro[1] = -a_avg[1];
+//	offset_acro[2] = -1 / 0.000061 - a_avg[2];
+//
+//	offset_gyro[0] = -g_avg[0];
+//	offset_gyro[1] = -g_avg[1];
+//	offset_gyro[2] = -g_avg[2];
+//
+//	ROS_INFO("a avg: %5f %5f %5f g avg: %5f %5f %5f\n",
+//				a_avg[0], a_avg[1], a_avg[2],
+//				g_avg[0], g_avg[1], g_avg[2]
+//		);
+	/* end toggle calibration */
 	while(ros::ok()) {
 		imu.read_raw();
-
 
 		imu_msg.angular_velocity.x = (offset_gyro[0] + imu.g[0]) * gyro_scale;
 		imu_msg.angular_velocity.y = (offset_gyro[1] + imu.g[1]) * gyro_scale;
@@ -119,7 +148,7 @@ sensor_set set;
 		fill_header(imu_msg);
 		imu_pub.publish(imu_msg);
 		ros::spinOnce();
-//		loop_rate.sleep();
+		//loop_rate.sleep();
 		
 //		count++;
 //		for (int i = 0; i < 3; ++i) {
@@ -128,10 +157,10 @@ sensor_set set;
 //			a_avg[i] = a_acumlat[i] / count;
 //			g_avg[i] = g_acumlat[i] / count;
 //		}
-	//	ROS_INFO("a avg: %5f %5f %5f g avg: %5f %5f %5f\n",
-	//			a_avg[0], a_avg[1], a_avg[2],
-	//			g_avg[0], g_avg[1], g_avg[2]
-	//		);
+//		ROS_INFO("a avg: %5f %5f %5f g avg: %5f %5f %5f\n",
+//				a_avg[0], a_avg[1], a_avg[2],
+//				g_avg[0], g_avg[1], g_avg[2]
+//			);
 	}
 	return 0;
 }

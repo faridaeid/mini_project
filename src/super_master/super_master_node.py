@@ -16,6 +16,7 @@ class State(Enum):
     StopPID = 2
     Rotate = 3
     DetectSign = 4
+    Finish = 5
 
 class SuperMasterNode(object):
 
@@ -23,7 +24,7 @@ class SuperMasterNode(object):
 
         rospy.init_node('super_master_node')
 
-        # self.sub_close_dist = rospy.Subscriber('lidar/closest_distance', Float64, self.set_close_dist)
+        self.sub_lidar_front_dist = rospy.Subscriber('lidar/front_distance', Float64, self.set_close_dist)
 
         self.rotation_controller = RotationController()
         self.color_segmentation = ColorSegmentation()
@@ -32,55 +33,95 @@ class SuperMasterNode(object):
 
         self.current_state = State.MovePID
 
+        self.lidar_front = 0
+        self.recovery_counter = 0
+
     def start_main_controller(self):
 
         rospy.sleep(5)
         rate = rospy.Rate(100)
+
         while not rospy.is_shutdown():
+
             if self.current_state == State.MovePID:
+                # print "move pid"
                 self.move_pid()
             elif self.current_state == State.StopPID:
+                # print "stop"
                 self.stop_pid()
             elif self.current_state == State.DetectSign:
-                print "detect sign"
+                # print "detect_sign"
                 self.detect_sign()
             elif self.current_state == State.Rotate:
+                # print "rotate"
                 self.rotate()
+            elif self.current_state == State.Finish:
+                self.finish()
+
             rate.sleep()
 
     def move_pid(self):
+
         center_x = self.color_segmentation.get_center_target()
         area = self.color_segmentation.get_target_area()
-        print area
-        if area < 17000:
-            self.pid_controller.start_pid(center_x)
+
+        # print "Lidar Front", self.lidar_front
+        print "move pid ", "lidar front ", self.lidar_front, "area: ", area
+        # if self.lidar_front < 0.7:
+        if area < 200 or area > 30000:
+            self.pid_controller.idle()
+
+            if self.recovery_counter > 4:
+                self.recovery_counter = 0
+                self.rotation_controller.set_rotation_angle(180)
+                self.current_state = State.Rotate
+            else:
+                self.recovery_counter += 1
+
+        # elif area > 16500:
+        # elif area > 15500:
+        elif area > 14500:
+
+                self.current_state = State.StopPID
+
         else:
-            self.current_state = State.StopPID
+            self.recovery_counter = 0
+            self.pid_controller.start_pid(center_x)
 
     def stop_pid(self):
+
+        # if self.lidar_front == 0 or self.lidar_front > 0.6:
+        #     self.current_state = State.MovePID
+        # else:
         self.pid_controller.stop_pid()
         self.current_state = State.DetectSign
 
     def detect_sign(self):
 
-        sign_detected = self.color_segmentation.detect_arrow_direction()
+        sign_detected = self.color_segmentation.detect_sign()
+        print sign_detected
 
-        if sign_detected == "right" or sign_detected == "left":
-            if sign_detected == "right":
-                self.rotation_controller.set_rotation_angle(90)
-            else:
-                self.rotation_controller.set_rotation_angle(-90)
+        if sign_detected == "circle":
+            print "circle"
+            self.current_state = State.Finish
+        else:
+            if sign_detected == "right" or sign_detected == "left":
+                if sign_detected == "right":
+                    self.rotation_controller.set_rotation_angle(90)
+                else:
+                    self.rotation_controller.set_rotation_angle(-90)
 
-            self.current_state = State.Rotate
+                self.current_state = State.Rotate
 
     def rotate(self):
         self.rotation_controller.rotate()
         self.current_state = State.MovePID
 
-    def get_direction(self):
-        direction = self.color_segmentation.detect_arrow_direction()
+    def set_close_dist(self, data):
+        self.lidar_front = data.data
 
-
+    def finish(self):
+        self.pid_controller.idle()
 if __name__ == '__main__':
     mastar_node = SuperMasterNode()
     mastar_node.start_main_controller()
